@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<!-- 
+Launches all necessary nodes that transform various frames
+-->
+
+    <!-- tf_laserscan_to_pointcloud node -->
+    <node
+      respawn="true"
+      pkg="sensor_test"
+      type="laser_scan"
+      name="laser_scan"
+      output="screen" >
+    </node>
+	
+</launch>
