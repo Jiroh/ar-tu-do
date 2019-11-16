@@ -24,6 +24,11 @@ class StraightDrive
     private:
     ros::NodeHandle m_node_handle;
     ros::Publisher m_straightdrive_publisher;
+    ros::ServiceServer m_straightdrive_forward;
+    ros::ServiceServer m_straightdrive_backward;
+
+    bool drive_backwards(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
+    bool drive_forwards(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response)
 
       /**
      * @brief takes speed and publishes it to gazebo/focbox

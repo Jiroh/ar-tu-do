@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   vesc_sim
+  message_generation
 )
 
 ###################################
@@ -36,10 +37,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_service_files(
+  FILES
+  drive.srv
+)
 
 add_executable(drive_straight   
   src/drive_straight.cpp
 )
+
+
 target_link_libraries(drive_straight ${catkin_LIBRARIES})
 add_dependencies(drive_straight ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
