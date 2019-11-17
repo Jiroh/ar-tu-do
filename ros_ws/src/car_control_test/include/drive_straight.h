@@ -2,6 +2,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
+#include "car_control_test/Drive.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wfloat-equal"
@@ -27,8 +28,8 @@ class StraightDrive
     ros::ServiceServer m_straightdrive_forward;
     ros::ServiceServer m_straightdrive_backward;
 
-    bool drive_backwards(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
-    bool drive_forwards(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response)
+    bool drive_backwards(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response);
+    bool drive_forwards(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response);
 
       /**
      * @brief takes speed and publishes it to gazebo/focbox

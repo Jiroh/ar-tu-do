@@ -12,6 +12,17 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
+add_service_files(
+  FILES
+  Drive.srv
+)
+
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -35,11 +46,6 @@ set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wchar-subscripts -Wchkp
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-)
-
-add_service_files(
-  FILES
-  drive.srv
 )
 
 add_executable(drive_straight   
