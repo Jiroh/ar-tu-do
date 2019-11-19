@@ -43,3 +43,9 @@ add_executable(laser_scan
 target_link_libraries(laser_scan ${catkin_LIBRARIES})
 add_dependencies(laser_scan ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+add_executable(imu  
+  src/imu.cpp
+)
+target_link_libraries(imu ${catkin_LIBRARIES})
+add_dependencies(imu ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
