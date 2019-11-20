@@ -21,19 +21,12 @@ class StraightDrive
     public:
     StraightDrive();
     void publishSpeed(double speed);
+    float m_speed = 0;
 
     private:
     ros::NodeHandle m_node_handle;
     ros::Publisher m_straightdrive_publisher;
-    ros::ServiceServer m_straightdrive_forward;
-    ros::ServiceServer m_straightdrive_backward;
+    ros::ServiceServer m_drive_with_speed;
 
-    bool drive_backwards(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response);
-    bool drive_forwards(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response);
-
-      /**
-     * @brief takes speed and publishes it to gazebo/focbox
-     */
-   
-    
+    bool drive_with_speed(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response);
 };

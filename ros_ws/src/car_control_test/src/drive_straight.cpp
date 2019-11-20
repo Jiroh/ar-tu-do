@@ -4,8 +4,7 @@ StraightDrive::StraightDrive()
 {
     
     this->m_straightdrive_publisher = m_node_handle.advertise<std_msgs::Float64>(TOPIC_FOCBOX_SPEED, 1);
-    this->m_straightdrive_forward = m_node_handle.advertiseService("drive_backwards", &StraightDrive::drive_backwards, this);
-    this->m_straightdrive_forward = m_node_handle.advertiseService("drive_forwards", &StraightDrive::drive_forwards, this);
+    this->m_drive_with_speed = m_node_handle.advertiseService("drive_with_speed", &StraightDrive::drive_with_speed, this);
 }
 
 void StraightDrive::publishSpeed(double speed)
@@ -15,15 +14,11 @@ void StraightDrive::publishSpeed(double speed)
     this->m_straightdrive_publisher.publish(speed_message);
 }
 
-bool StraightDrive::drive_forwards(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response)
+bool StraightDrive::drive_with_speed(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response)
 {
+    response.actualSpeed = m_speed;
+    m_speed = request.speed;
     std::cout<< "Forwards" << std::endl;
-    return true;
-}
-
-bool StraightDrive::drive_backwards(car_control_test::Drive::Request &request, car_control_test::Drive::Response &response)
-{
-    std::cout<< "Backwards" << std::endl;
     return true;
 }
 
@@ -31,10 +26,10 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "drive_straight");
     StraightDrive drive_straight;
-    // while(ros::ok()){
-    //     ros::spinOnce();
-    //     drive_straight.publishSpeed(1216.0);
-    // }
+    while(ros::ok()){
+        ros::spinOnce();
+        drive_straight.publishSpeed(drive_straight.m_speed);
+    }
 
     ros::spin();
 
