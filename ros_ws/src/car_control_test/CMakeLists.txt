@@ -8,6 +8,7 @@ add_compile_options(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  nav_msgs
   vesc_sim
   message_generation
 )
@@ -15,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
   FILES
   Drive.srv
+  TargetSpeed.srv
 )
 
 ## Generate added messages and services with any dependencies listed here

@@ -1,0 +1,6 @@
+float64 target_speed
+float64 distance
+---
+bool braking_possible
+float64 breaking_distance
+float64 current_speed
