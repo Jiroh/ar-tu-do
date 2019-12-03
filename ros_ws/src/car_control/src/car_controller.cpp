@@ -70,11 +70,11 @@ void CarController::emergencyStopCallback(const std_msgs::Bool::ConstPtr& emerge
 
 void CarController::stop()
 {
-    this->publishSpeed(0);
+    // this->publishSpeed(0);
 
-    std_msgs::Float64 brake_message;
-    brake_message.data = 0;
-    this->m_brake_publisher.publish(brake_message);
+    // std_msgs::Float64 brake_message;
+    // brake_message.data = 0;
+    // this->m_brake_publisher.publish(brake_message);
 }
 
 int main(int argc, char** argv)
