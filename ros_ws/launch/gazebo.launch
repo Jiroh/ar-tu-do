@@ -49,6 +49,6 @@
         <arg name="joystick_type" value="$(arg joystick_type)"/>
     </include>
 
-    <node pkg="simulation_tools" type="crash_detector" name="crash_detector" output="screen">
-    </node>
+    <node pkg="simulation_tools" type="crash_detector" name="crash_detector" output="screen"/>
+    <node pkg="gazebo_telemetry" type="gazebo_state_telemetry.py" name="gazebo_state_telemetry" output="screen"/>
 </launch>
