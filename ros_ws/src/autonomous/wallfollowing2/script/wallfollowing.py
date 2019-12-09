@@ -61,6 +61,10 @@ def map(in_lower, in_upper, out_lower, out_upper, value):
     return min(out_upper, max(out_lower, result))
 
 
+def convertRpmToSpeed(rpm):
+    return rpm / 1299.224
+
+
 def drive(angle, velocity):
     message = drive_param()
     message.angle = angle
@@ -141,6 +145,7 @@ def follow_walls(left_circle, right_circle, barrier, delta_time):
     last_speed = relative_speed
     speed = map(0, 1, parameters.min_throttle, parameters.max_throttle, relative_speed)  # nopep8
     steering_angle = steering_angle * map(parameters.high_speed_steering_limit_dead_zone, 1, 1, parameters.high_speed_steering_limit, relative_speed)  # nopep8
+    speed = convertRpmToSpeed(speed * 20000)
     drive(steering_angle, speed)
 
     show_line_in_rviz(2, [left_point, right_point],
