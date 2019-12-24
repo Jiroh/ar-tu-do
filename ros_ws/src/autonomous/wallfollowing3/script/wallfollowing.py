@@ -302,11 +302,11 @@ def laser_callback(scan_message):
         handle_scan(scan_message, delta_time)
 
     last_scan = scan_time
-    t_delta = time.time() - t_start
-    total_scan_time += t_delta
-    total_scan_count += 1
-    if total_scan_count % 40 == 0:
-        print "mean_scan_time:", total_scan_time / float(total_scan_count) * 1000.0, "ms", "scan_time:", delta_time, "s"
+    # t_delta = time.time() - t_start
+    # total_scan_time += t_delta
+    # total_scan_count += 1
+    # if total_scan_count % 40 == 0:
+    #     print "mean_scan_time:", total_scan_time / float(total_scan_count) * 1000.0, "ms", "scan_time:", delta_time, "s"
 
 
 def speed_callback(speed_message):
