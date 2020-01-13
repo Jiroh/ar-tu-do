@@ -148,7 +148,8 @@ def follow_walls(left_circle, right_circle, barrier, delta_time):
     last_speed = relative_speed
     speed = map(0, 1, parameters.min_throttle, parameters.max_throttle, relative_speed)  # nopep8
     steering_angle = steering_angle * map(parameters.high_speed_steering_limit_dead_zone, 1, 1, parameters.high_speed_steering_limit, relative_speed)  # nopep8
-    # 20000 are the maximal electrical revolutions per minute. More values describing the car properties can be found in car_config.h.
+    # 20000 are the maximal electrical revolutions per minute.
+    # More values describing the car properties can be found in car_config.h.
     speed = convertRpmToSpeed(speed * 20000)
     drive(steering_angle, speed)
 
