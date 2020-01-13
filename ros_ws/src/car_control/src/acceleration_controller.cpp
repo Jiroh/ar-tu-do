@@ -47,6 +47,7 @@ float AccelerationController::calcRadiusFromAngle(float angle) {
     if (angle_rad == 0) {
         angle_rad = 0.0001;
     }
+    // std::cout << "accel: radius: " << car_config::WHEELBASE / std::sin(angle_rad) << " angle: " << angle_rad << std::endl;
     return car_config::WHEELBASE / std::sin(angle_rad);
 }
 
@@ -92,7 +93,8 @@ void AccelerationController::setControlledTargetSpeed(float parameters_angle, fl
 }
 
 void AccelerationController::driveParametersCallback(const drive_msgs::drive_param::ConstPtr& parameters) {
-    setControlledTargetSpeed(parameters->angle, parameters->velocity);
+    // setControlledTargetSpeed(parameters->angle, parameters->velocity);
+    m_target_speed = parameters->velocity;
     m_angle = parameters->angle;
 }
 
