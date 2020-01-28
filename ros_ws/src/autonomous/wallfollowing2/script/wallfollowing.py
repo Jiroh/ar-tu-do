@@ -199,9 +199,12 @@ def laser_callback(scan_message):
     global last_scan
 
     scan_time = scan_message.header.stamp.to_sec()
+    # TODO why check both, absolute distance and scan_time > last_scan? shouldnt (scan_time - last_scan > 0.0001) suffice?
     if last_scan is not None and abs(scan_time - last_scan) > 0.0001 and scan_time > last_scan:  # nopep8
         delta_time = scan_time - last_scan
         handle_scan(scan_message, delta_time)
+
+    # TODO why skip the first scan? couldnt we handle_scan(scan_message, 0) instead?
 
     last_scan = scan_time
 
