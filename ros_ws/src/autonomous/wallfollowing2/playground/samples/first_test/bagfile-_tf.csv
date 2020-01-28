@@ -1,4 +1,4 @@
-%time,field.transforms0.header.seq,field.transforms0.header.stamp,field.transforms0.header.frame_id,field.transforms0.child_frame_id,field.transforms0.transform.translation.x,field.transforms0.transform.translation.y,field.transforms0.transform.translation.z,field.transforms0.transform.rotation.x,field.transforms0.transform.rotation.y,field.transforms0.transform.rotation.z,field.transforms0.transform.rotation.w
+time,transforms0.header.seq,transforms0.header.stamp,transforms0.header.frame_id,transforms0.child_frame_id,transforms0.transform.translation.x,transforms0.transform.translation.y,transforms0.transform.translation.z,transforms0.transform.rotation.x,transforms0.transform.rotation.y,transforms0.transform.rotation.z,transforms0.transform.rotation.w
 1579082068979265672,0,1579082068987660213,base_link,base_imu_link,0.0,0.0,0.0,0.0,0.0,0.0,1.0
 1579082068980728347,0,1579082069083205422,base_link,left_steering,0.0,0.0,0.0,0.0,0.0,0.0,1.0
 1579082068985737021,0,1579082068997768553,base_link,base_imu_link,0.0,0.0,0.0,0.0,0.0,0.0,1.0
