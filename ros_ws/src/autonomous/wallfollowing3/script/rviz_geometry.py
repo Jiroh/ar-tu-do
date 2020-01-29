@@ -13,6 +13,24 @@ RVIZ_NAMESPACE = "wall_following"
 marker_publisher = rospy.Publisher(RVIZ_TOPIC, Marker, queue_size=1)
 
 
+def show_points_in_rviz(id, points, color):
+    message = Marker()
+    message.header.frame_id = RVIZ_FRAME
+    message.header.stamp = rospy.Time.now()
+    message.ns = RVIZ_NAMESPACE
+    message.type = Marker.ADD
+    message.pose.orientation.w = 1
+
+    message.id = id
+    message.type = Marker.POINTS
+    message.color = color
+    message.points = [PointMessage(points[i, 1], -points[i, 0], 0) for i in range(points.shape[0])]
+    message.scale.x = 0.05
+    message.scale.y = 0.05
+    message.scale.z = 0.05
+    marker_publisher.publish(message)
+
+
 def show_line_in_rviz(id, points, color, line_width=0.02):
     message = Marker()
     message.header.frame_id = RVIZ_FRAME
@@ -35,11 +53,11 @@ def show_line_in_rviz(id, points, color, line_width=0.02):
     marker_publisher.publish(message)
 
 
-def show_circle_in_rviz(circle, wall, id):
+def show_circle_in_rviz(circle, wall, id, color):
     start_angle = circle.get_angle(Point(wall[0, 0], wall[0, 1]))
     end_angle = circle.get_angle(Point(wall[-1, 0], wall[-1, 1]))
     points = circle.create_array(start_angle, end_angle)
-    show_line_in_rviz(id, points, color=ColorRGBA(0, 1, 1, 1))
+    show_line_in_rviz(id, points, color=color)
 
 
 def delete_marker(id):
